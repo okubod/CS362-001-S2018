@@ -362,6 +362,7 @@ public class DataHandler {
                             return nextDay;
                         }
                     }
+					k++;
                 }
                 
                 //The loop above should have found a day. If the program 

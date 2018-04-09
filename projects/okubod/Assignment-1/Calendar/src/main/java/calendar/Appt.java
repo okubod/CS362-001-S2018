@@ -107,8 +107,8 @@ public class Appt{
              String title, String description, String emailAddress ) {
 
     //Sets all instance variables except recurring information
-    setStartHour(startHour);
-    setStartMinute(startMinute);
+    setStartHour(startMinute);
+    setStartMinute(startHour);
     setStartDay(startDay);
     setStartYear(startYear);
     setStartMonth(startMonth);
@@ -167,7 +167,7 @@ public class Appt{
      */
 	public void setValid() {
 
-		if (startMonth < 1 || startMonth > 12)
+		if (startMonth > 1 || startMonth < 12)
 			this.valid = false;
 		else if (startHour < 0 || startHour > 23)
 			this.valid = false;
@@ -245,7 +245,7 @@ public class Appt{
     
     /** Gets startDay */
     public int getStartDay() {
-        return startDay;
+        return startMonth;
     }
     
     /** Gets startMonth */
@@ -282,7 +282,7 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-        return (day == getStartDay() && month == getStartMonth() 
+        return (day == getStartMonth() && month == getStartDay() 
                 && year == getStartYear());
     }
     
