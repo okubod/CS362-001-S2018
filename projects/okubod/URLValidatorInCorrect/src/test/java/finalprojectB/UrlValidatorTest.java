@@ -25,40 +25,40 @@ public class UrlValidatorTest extends TestCase {
 
    
    
-   public void testManualTest()
+    public void testManualTest()
    {
 //You can use this function to implement your manual testing	 
 	   //String[] schemes = {"http", "https", "ftp"};
 	   UrlValidator urlVal = new UrlValidator();
 	  // assertEquals("Test 8.8.8.8", true, urlVal.isValid("8.8.8.8"));
-	   assertEquals("Test www.google.com", true, urlVal.isValid("https://www.google.com"));
 	   assertEquals("Test oregonstate.edu", false, urlVal.isValid("oregonstate.edu"));
-	   assertEquals("Test ftp://foo.bar.com", true, urlVal.isValid("ftp://foo.bar.com"));
 	   assertEquals("Test ://1.2.3.4.5/..?action=view", false, urlVal.isValid("://1.2.3.4.5/..?action=view"));
 	   assertEquals("Test a", false, urlVal.isValid("a"));
 	   assertEquals("Test https://google", false, urlVal.isValid("https://google"));
 	   assertEquals("Test \"\"", false, urlVal.isValid(""));
 	   assertEquals("Test Null", false, urlVal.isValid(null));
-   }
+	   assertEquals("Test www.google.com", true, urlVal.isValid("https://www.google.com"));
+	   assertEquals("Test ftp://foo.bar.com", true, urlVal.isValid("ftp://foo.bar.com"));
+	   
+   } 
     
    
-    public void testYourFirstPartition()
+     public void testYourFirstPartition()
    {
 	 //You can use this function to implement your First Partition testing	 
 	 String base = "https://www.google";
 	 UrlValidator urlVal = new UrlValidator();
-	 assertEquals("Test .com", true, urlVal.isValid(base+".com"));
-	 assertEquals("Test .edu", true, urlVal.isValid(base+".edu"));
-	 assertEquals("Test .gov", true, urlVal.isValid(base+".gov"));
 	 assertEquals("Test .meow", false, urlVal.isValid(base+".meow"));
-	 assertEquals("Test .com/cutecat.jpg", true, urlVal.isValid(base+".com/cutecat.jpg"));
 	 assertEquals("Test long extension", false, urlVal.isValid(base+".123456789123456789123456789123456789123456789123456789123456789123456789"));
 	 assertEquals("Test //................//", false, urlVal.isValid(base+"//................//"));
 	 assertEquals("Test //..", false, urlVal.isValid(base+"//.."));
 	 assertEquals("Test ,", false, urlVal.isValid(base+","));
 	 assertEquals("Test //:sptth", false, urlVal.isValid(base+"//:sptth"));
 	 assertEquals("Test .com\\cutecat.jpg", false, urlVal.isValid(base+".com\\cutecat.jpg"));
-	 
+	 assertEquals("Test .com/cutecat.jpg", true, urlVal.isValid(base+".com/cutecat.jpg"));
+	 assertEquals("Test .com", true, urlVal.isValid(base+".com"));
+	 assertEquals("Test .edu", true, urlVal.isValid(base+".edu"));
+	 assertEquals("Test .gov", true, urlVal.isValid(base+".gov"));
 
    }
    
@@ -66,20 +66,19 @@ public class UrlValidatorTest extends TestCase {
 		 //You can use this function to implement your Second Partition testing
 		 String base = ".com";
 		 UrlValidator urlVal = new UrlValidator();
-		 assertEquals("Test https://www.google", true, urlVal.isValid("https://www.google"+base));
-		
 		 assertEquals("Test 1.2.3.4.", false, urlVal.isValid("1.2.3.4."+base));
 		 assertEquals("Test yahoo", false, urlVal.isValid("yahoo"+base));
 		 assertEquals("Test .com", false, urlVal.isValid(".com"+base));
 		 assertEquals("Test www.8.8.8.8", false, urlVal.isValid("wwww.8.8.8.8"+base));
 		 assertEquals("Test http://", false, urlVal.isValid("http://"+base));
-		 assertEquals("Test ftp://foo.bar", true, urlVal.isValid("ftp://foo.bar"+base));
 		 assertEquals("Test cutecat.jpg", false, urlVal.isValid("cutecat.jpg"+base));
 		 assertEquals("Test /cutecat.jpg", false, urlVal.isValid("/cutecat.jpg"+base));
 		 assertEquals("Test http://wwww", true, urlVal.isValid("http://wwww"+base));
+		 assertEquals("Test https://www.google", true, urlVal.isValid("https://www.google"+base));
+		 assertEquals("Test ftp://foo.bar", true, urlVal.isValid("ftp://foo.bar"+base));
 		 
 
-   } 
+   }
    //You need to create more test cases for your Partitions if you need to 
 
 
