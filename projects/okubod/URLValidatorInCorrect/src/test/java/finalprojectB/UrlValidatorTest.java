@@ -8,7 +8,14 @@ import junit.framework.TestCase;
 // Again, it is up to you to use this file or not!
 
 
-
+public class Pairs{
+			public string x;
+			public bool y;
+			public Pairs(int name, bool type){
+				x = name;
+				type = y;
+			}
+}
 
 
 public class UrlValidatorTest extends TestCase {
@@ -25,7 +32,7 @@ public class UrlValidatorTest extends TestCase {
 //You can use this function to implement your manual testing	 
 	   //String[] schemes = {"http", "https", "ftp"};
 	   UrlValidator urlVal = new UrlValidator();
-	   assertEquals("Test 8.8.8.8", true, urlVal.isValid("8.8.8.8"));
+	   //assertEquals("Test 8.8.8.8", true, urlVal.isValid("8.8.8.8"));
 	   assertEquals("Test https://www.google.com", true, urlVal.isValid("https://www.google.com"));
 	   assertEquals("Test oregonstate.edu", true, urlVal.isValid("oregonstate.edu"));
 	   assertEquals("Test ftp://foo.bar.com", true, urlVal.isValid("ftp://foo.bar.com"));
@@ -36,7 +43,7 @@ public class UrlValidatorTest extends TestCase {
    }
    
    
-   public void testYourFirstPartition()
+/*   public void testYourFirstPartition()
    {
 	 //You can use this function to implement your First Partition testing	 
 	 String base = "https://www.google";
@@ -75,17 +82,17 @@ public class UrlValidatorTest extends TestCase {
 
    }
    //You need to create more test cases for your Partitions if you need to 
-   
+ */  
    public void testIsValid()
    {
 	   //You can use this function for programming based testing
-	   String[] Ext = {".edu", ".com", ".gov", ".meow", "....", "",".123456789123456789123456789123456789123456789123456789123456789123456789"};
-	   String[] Scheme = {"https://", "http://", "ftp://", "http:/", "sptth://", "://", ""};
-	   String[] Bases = {"www.google", "www.oregonstate", "www.yahoo", "lala.lalala", "/cutecats/cutecats", "0.0.0.0", ""};
+	   //String[] Ext = {".edu", ".com", ".gov", ".meow", "....", "",".123456789123456789123456789123456789123456789123456789123456789123456789"};
+	   //String[] Scheme = {"https://", "http://", "ftp://", "http:/", "sptth://", "://", ""};
+	   //String[] Bases = {"www.google", "www.oregonstate", "www.yahoo", "lala.lalala", "/cutecats/cutecats", "0.0.0.0", ""};
 	   
 	   UrlValidator urlVal = new UrlValidator();
 	   	   
-	   for(int i=0;i<7;i++){
+/*for(int i=0;i<7;i++){
 		   for(int j=0;j<7;j++){
 			 for(int k=0;k<7;k++){
 				 if(urlVal.isValid(Scheme[i]+Bases[j]+Ext[k])){
@@ -93,10 +100,36 @@ public class UrlValidatorTest extends TestCase {
 				 }else{
 					 System.out.println(Scheme[i]+Bases[j]+Ext[k] + " is  not valid.");
 				 }
+				 
+			 }
+		   }
+	   }*/
+	   
+	   /*public class Pairs{
+			public string x;
+			public bool y;
+	   }*/
+	   
+	   Pairs[] extensions = {new Pair(".edu", true),new Pair( ".com", true), new Pair(".gov",true), new Pair(".meow",false),new Pair("....",false), new Pair(".123456789123456789123456789123456789123456789123456789123456789123456789", false), new Pair("", false)};
+	   Pairs[] schemes = {new Pair("https://", true),new Pair("http://", true), new Pair("ftp://", true), new Pair("http:/", false), new Pair("sptth://", false), new Pair("://", false), new Pair("", false)};
+	   Pairs[] bases = {new Pair("www.google", true),new Pair("www.oregonstate", true), new Pair("www.yahoo", true), new Pair("lala.lalala", false), new Pair("/cutecats/cutecats", false), new Pair("0.0.0.0", false), new Pair("", false)};
+	   //Pairs[] paths = {new Pair("https://", true),new Pair("http://", true), new Pair("ftp://", true), new Pair("http:/", false), new Pair("sptth://", false), new Pair("://", false), new Pair("", false)};
+	   //Pairs[] queries = {new Pair("https://", true),new Pair("http://", true), new Pair("ftp://", true), new Pair("http:/", false), new Pair("sptth://", false), new Pair("://", false), new Pair("", false)};
+	   for(int i=0;i<7;i++){
+		   for(int j=0;j<7;j++){
+			 for(int k=0;k<7;k++){
+				 if(extensions[i].y && schemes[j].y && bases[k].y){
+					 assertEquals("Test " + schemes[j].x + bases[k].x + extensions[i].x, true, urlVal.isValid(schemes[j].x + bases[k].x + extensions[i].x));
+				 }else{
+					 assertEquals("Test " + schemes[j].x + bases[k].x + extensions[i].x, false, urlVal.isValid(schemes[j].x + bases[k].x + extensions[i].x));
+					 
+				 }
+				 
 			 }
 		   }
 	   }
-	   
+
+
 	   
 
    }
